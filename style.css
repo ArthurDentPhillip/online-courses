@@ -55,6 +55,7 @@ body {
 .courses-page__search {
   flex-shrink: 0;
 }
+
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -66,7 +67,6 @@ body {
   border: 1px solid transparent;
   border-radius: 4px;
   padding: 0.5rem 1.5rem 0.5rem 1rem;
-  font-family: "Lato", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   line-height: 160%;
@@ -74,7 +74,7 @@ body {
   letter-spacing: 0;
   color: #6b7280;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 .filters__item:hover {
   color: #1f2937;
@@ -110,7 +110,6 @@ body {
   border-radius: 4px;
   font-weight: 400;
   line-height: 150%;
-  font-family: "Lato", sans-serif;
   font-size: 0.875rem;
   outline: none;
   transition: border-color 0.2s ease-in-out;
@@ -215,7 +214,7 @@ body {
   font-weight: 400;
   font-size: 18px;
   line-height: 150%;
-  letter-spacing: 0%;
+  letter-spacing: 0;
   color: #6b7280;
 }
 

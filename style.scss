@@ -21,7 +21,6 @@ $border-radius-card: 8px;
 $border-radius-pill: 4px;
 
 // --- Mixins ---
-
 // Bootstrap-like container mixin
 @mixin make-container($max-width: 1200px, $padding-x: 1rem) {
   width: 100%;
@@ -31,18 +30,6 @@ $border-radius-pill: 4px;
   padding-left: $padding-x;
   max-width: $max-width;
 }
-
-// Responsive font size mixin
-@mixin responsive-font-size($min-size, $max-size, $min-vw: 320px, $max-vw: 1920px) {
-  font-size: $min-size;
-  @media (min-width: $min-vw) {
-    font-size: calc(#{$min-size} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw})));
-  }
-  @media (min-width: $max-vw) {
-    font-size: $max-size;
-  }
-}
-
 
 // --- Base Styles ---
 * {
@@ -103,9 +90,6 @@ body {
     flex-shrink: 0;
   }
   
-  &__grid {
-    // Обрабатывается классом .grid class
-  }
 }
 
 // --- Filters ---
@@ -120,7 +104,6 @@ body {
     border: 1px solid transparent;
     border-radius: $border-radius-pill;
     padding: 0.5rem 1.5rem 0.5rem 1rem;
-    font-family: $font-family-base;
     font-size: 1rem;
     font-weight: 700;
     line-height: 160%;
@@ -128,7 +111,10 @@ body {
     letter-spacing: 0;   
     color: $color-text-light;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    transition:
+      color 0.2s ease-in-out,
+      background-color 0.2s ease-in-out,
+      border-color 0.2s ease-in-out;
 
     &:hover {
       color: $color-text-dark;
@@ -169,7 +155,6 @@ body {
     border-radius: 4px;
     font-weight: 400;
     line-height: 150%;
-    font-family: $font-family-base;
     font-size: 0.875rem;
     outline: none;
     transition: border-color 0.2s ease-in-out;
@@ -279,7 +264,7 @@ body {
     font-weight: 400;
     font-size: 18px;
     line-height: 150%;
-    letter-spacing: 0%;
+    letter-spacing: 0;
     color: $color-text-light;
   }
 }
