@@ -1,0 +1,316 @@
+// style.scss
+
+// --- Variables ---
+$color-primary: #facc15; 
+$color-text-dark: #1f2937;
+$color-text-light: #6b7280;
+$color-border-pill: #FF3F3A;
+$color-border-input: #D7DADD;
+$color-bg-light: #f9fafb;
+$color-white: #ffffff;
+
+$color-tag-price: #FF4242;
+$color-tag-marketing: #03CEA4; 
+$color-tag-management: #5A87FC; 
+$color-tag-hr: #F89828; 
+$color-tag-design: #F52F6E; 
+$color-tag-development: #7772F1; 
+
+$font-family-base: 'Lato', sans-serif;
+$border-radius-card: 8px;
+$border-radius-pill: 4px;
+
+// --- Mixins ---
+
+// Bootstrap-like container mixin
+@mixin make-container($max-width: 1200px, $padding-x: 1rem) {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $padding-x;
+  padding-left: $padding-x;
+  max-width: $max-width;
+}
+
+// Responsive font size mixin
+@mixin responsive-font-size($min-size, $max-size, $min-vw: 320px, $max-vw: 1920px) {
+  font-size: $min-size;
+  @media (min-width: $min-vw) {
+    font-size: calc(#{$min-size} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw})));
+  }
+  @media (min-width: $max-vw) {
+    font-size: $max-size;
+  }
+}
+
+
+// --- Base Styles ---
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-family-base;
+  color: $color-text-dark;
+  background-color: $color-bg-light;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  @include make-container(1200px, 2rem);
+}
+
+// --- Page Layout ---
+.courses-page {
+  padding: 4rem 0;
+
+  &__title {
+    text-align: center;
+    font-weight: 900;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-size: 2.875rem;
+    margin-bottom: 2.5rem;
+  }
+
+  &__subtitle { 
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 150%;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  &__filters {
+    flex-grow: 1;
+  }
+
+  &__search {
+    flex-shrink: 0;
+  }
+  
+  &__grid {
+    // Обрабатывается классом .grid class
+  }
+}
+
+// --- Filters ---
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  &__item {
+    position: relative;
+    background: none;
+    border: 1px solid transparent;
+    border-radius: $border-radius-pill;
+    padding: 0.5rem 1.5rem 0.5rem 1rem;
+    font-family: $font-family-base;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 160%;
+    text-align: center;
+    letter-spacing: 0;   
+    color: $color-text-light;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      color: $color-text-dark;
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &--active {
+      border-color: $color-border-pill;
+      color: $color-text-dark;
+      background-color: $color-white;
+    }
+  }
+
+  &__count {
+    position: absolute; 
+    top: 2px;          
+    right: 10px;        
+    font-size: 0.625rem;
+    color: $color-text-light;
+    font-weight: 900;
+    line-height: 150%;
+    text-align: center; 
+    letter-spacing: 0;   
+  }
+}
+
+// --- Search ---
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &__input {
+    width: 315px;
+    height: 44px;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    border: 1px solid $color-border-input;
+    border-radius: 4px;
+    font-weight: 400;
+    line-height: 150%;
+    font-family: $font-family-base;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+
+    &:focus {
+      border-color: $color-tag-management;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: 1rem;
+    color: $color-text-light;
+    pointer-events: none;
+  }
+}
+
+// --- Grid System ---
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+// --- Card ---
+.card {
+  cursor: pointer;
+  background-color: $color-white;
+  border-radius: $border-radius-card;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  &__image-wrapper {
+    background-color: $color-primary;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__content {
+    display: flex;  
+    flex-direction: column;
+    padding: 1.5rem;
+    min-height: 200px;
+  }
+
+
+  &__tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: $border-radius-pill;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 150%;
+    color: $color-white;
+    margin-bottom: 1rem;
+    letter-spacing: 0;
+    align-self: flex-start;
+
+    &--marketing { background-color: $color-tag-marketing; }
+    &--management { background-color: $color-tag-management; }
+    &--hr { background-color: $color-tag-hr; }
+    &--design { background-color: $color-tag-design; }
+    &--development { background-color: $color-tag-development; }
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: auto;
+    line-height: 150%;
+    letter-spacing: 0; 
+    flex-grow: 1;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    margin-top: 1rem;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: 0;
+    color: $color-tag-price;
+  }
+
+  &__author {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: $color-text-light;
+  }
+}
+
+// --- Responsive Adjustments ----
+@media (max-width: 1177px) {
+  .courses-page__controls {
+    flex-wrap: wrap;
+  }
+
+  .courses-page__search {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .search__input {
+    width: 100%; 
+  }
+}
+
+@media (max-width: 768px) {
+  .courses-page__controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .courses-page__filters {
+    width: 100%;
+  }
+
+  .filters {
+    justify-content: center;
+  }
+}
