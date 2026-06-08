@@ -2,7 +2,7 @@
 
 > Современный адаптивный интерфейс для каталога онлайн-курсов.
 
-![Demo](https://online-courses-tau-coral.vercel.app/)
+![Demo](./img/screenshot.png)
 
 ## 🚀 О проекте
 
